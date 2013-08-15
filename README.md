@@ -1,6 +1,6 @@
 # Artoo Adaptor For Raspberry Pi
 
-This repository contains the Artoo (http://artoo.io/) adaptor for the Raspberry Pi's GPIO.
+This repository contains the Artoo (http://artoo.io/) adaptor for the Raspberry Pi (http://www.raspberrypi.org/) tiny Linux computer's General Purpose Input/Output (GPIO).
 
 Artoo is a open source micro-framework for robotics using Ruby.
 
