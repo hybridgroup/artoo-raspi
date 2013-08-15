@@ -2,7 +2,7 @@ require 'artoo/adaptors/adaptor'
 
 module Artoo
   module Adaptors
-    # Connect to a raspi device
+    # Connect to a Raspberry Pi GPIO
     # @see device documentation for more information
     class Raspi < Adaptor
       finalizer :finalize
@@ -16,6 +16,8 @@ module Artoo
       # Creates a connection with device
       # @return [Boolean]
       def connect
+        require 'pi_piper' unless defined?(::PiPiper)
+
         super
       end
 

@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_runtime_dependency 'artoo', '~> 1.0.0.rc3'
+  s.add_runtime_dependency 'pi_piper'
   # TODO: add your development dependencies here
   # EXAMPLE:
   # s.add_development_dependency 'minitest', '~> 5.0'
