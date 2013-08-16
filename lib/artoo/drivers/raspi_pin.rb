@@ -4,12 +4,13 @@ module Artoo
   module Drivers
     # Raspberry Pi pin driver behaviors
     class RaspiPin < Driver
-      attr_reader :raspi_pin, :direction
+      attr_reader :raspi_pin, :direction, :value
 
       def initialize(params)
         super
 
         @direction = params[:additional_params][:direction]
+        @value = false
       end
 
       # Start driver and any required connections
@@ -34,7 +35,25 @@ module Artoo
       end
 
       def toggle
-        raspi_pin.off? ? raspi_pin.on : raspi_pin.off
+        off? ? on : off
+      end
+
+      def on
+        @value = true
+        raspi_pin.on
+      end
+
+      def on?
+        value == true
+      end
+
+      def off
+        @value = false
+        raspi_pin.off
+      end
+
+      def off?
+        !on?
       end
     end
   end
