@@ -48,7 +48,7 @@ sudo ruby examples/raspi_led.rb
 
 ## Connecting to Raspberry Pi GPIO
 
-This gem only works on a real Raspberry Pi. Do not bother trying on any other kind of computer it will not work. ALso note you will need to connect actual circuits to the Raspberry Pi's GPIO pins. Here is an example of wiring the circuits for the GPIO to connect a single LED:
+This gem only works on a real Raspberry Pi. Do not bother trying on any other kind of computer it will not work. Also note you will need to connect actual circuits to the Raspberry Pi's GPIO pins. Here is an example of wiring the circuits for the GPIO to connect a single LED:
 
 ![GPIO LED Circuit Example](https://github.com/jwhitehorn/pi_piper/blob/master/examples/morse_code/circuit.png)
 
