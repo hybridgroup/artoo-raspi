@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_runtime_dependency 'artoo', '~> 1.0.0.rc3'
+  s.add_runtime_dependency 'artoo', '~> 1.0.0.rc4'
   s.add_runtime_dependency 'pi_piper'
   # TODO: add your development dependencies here
   # EXAMPLE:
