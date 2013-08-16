@@ -4,6 +4,8 @@ module Artoo
   module Drivers
     # Raspberry Pi pin driver behaviors
     class RaspiPin < Driver
+      COMMANDS = [:on?, :on, :off?, :off, :toggle].freeze
+
       attr_reader :raspi_pin, :direction, :value
 
       def initialize(params)
