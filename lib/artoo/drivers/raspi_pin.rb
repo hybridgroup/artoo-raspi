@@ -9,7 +9,7 @@ module Artoo
       def initialize(params)
         super
 
-        @direction = params[:direction]
+        @direction = params[:additional_params][:direction]
       end
 
       # Start driver and any required connections
