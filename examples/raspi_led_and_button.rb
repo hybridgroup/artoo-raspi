@@ -2,8 +2,8 @@ require 'artoo'
 
 connection :raspi, :adaptor => :raspi
 device :led, :driver => :raspi_pin, :pin => 17, :direction => :out
-device :button, :driver => :raspi_pin, :pin => 21, :direction => :in
+device :button, :driver => :raspi_pin, :pin => 22, :direction => :in
 
 work do
-  on button, :push => proc {led.toggle}
+  on button, :update => proc {led.toggle}
 end

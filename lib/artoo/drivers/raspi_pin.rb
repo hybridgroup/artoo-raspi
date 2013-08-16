@@ -33,7 +33,9 @@ module Artoo
       end
 
       def handle_message_events
-        publish(event_topic_name("update"), "pin", raspi_pin.value) if raspi_pin && raspi_pin.changed?
+        return if raspi_pin.nil?
+        raspi_pin.read
+        publish(event_topic_name("update"), "pin", raspi_pin.value) if raspi_pin.changed?
       end
 
       def toggle
