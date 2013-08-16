@@ -52,4 +52,9 @@ This gem only works on a real Raspberry Pi. Do not bother trying on any other ki
 
 ![GPIO LED Circuit Example](https://github.com/jwhitehorn/pi_piper/blob/master/examples/morse_code/circuit.png)
 
+To add the button used in the example, add a momentary contact switch to the circuit.
+
+![GPIO Switch Circuit Example](https://github.com/jwhitehorn/pi_piper/blob/master/examples/simple_switch/circuit.png)
+
+
 

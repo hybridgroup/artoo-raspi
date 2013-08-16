@@ -10,7 +10,8 @@ Gem::Specification.new do |s|
   s.email       = ["artoo@hybridgroup.com"]
   s.homepage    = "https://github.com/hybridgroup/artoo-raspi"
   s.summary     = %q{Artoo adaptor and driver for Raspberry Pi}
-  s.description = %q{Artoo adaptor and driver for Raspberry Pi}
+  s.description = %q{Artoo adaptor and driver for Raspberry Pi GPIO}
+  s.license     = 'Apache 2.0'
 
   s.rubyforge_project = "artoo-raspi"
 
