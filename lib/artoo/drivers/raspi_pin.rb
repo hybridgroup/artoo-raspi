@@ -36,8 +36,7 @@ module Artoo
         return if raspi_pin.nil?
         raspi_pin.read
         if raspi_pin.changed?
-          @value = (raspi_pin.value == 0)
-          publish(event_topic_name(on? ? "on" : "off"))
+          publish(event_topic_name(raspi_pin.value == 0 ? "push" : "release"))
           publish(event_topic_name("update"), "pin", raspi_pin.value)
         end
       end
