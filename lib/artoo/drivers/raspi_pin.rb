@@ -4,15 +4,18 @@ module Artoo
   module Drivers
     # Raspberry Pi pin driver behaviors
     class RaspiPin < Driver
-      COMMANDS = [:on?, :on, :off?, :off, :toggle].freeze
+      COMMANDS = [:is_on?, :on, :is_off?, :off, :toggle].freeze
 
       attr_reader :raspi_pin, :direction, :value
 
-      def initialize(params)
+      def initialize(params={})
         super
 
-        @direction = params[:additional_params][:direction]
+        params[:additional_params] ||= {}
+        @direction = params[:additional_params][:direction] || :out
         @value = false
+
+        @raspi_pin = ::PiPiper::Pin.new(:pin => pin, :direction => direction)
       end
 
       # Start driver and any required connections
@@ -21,8 +24,6 @@ module Artoo
           every(interval) do
             handle_message_events
           end
-
-          @raspi_pin = PiPiper::Pin.new(:pin => pin, :direction => direction)
 
           super
         rescue Exception => e
@@ -42,7 +43,7 @@ module Artoo
       end
 
       def toggle
-        off? ? on : off
+        is_off? ? on : off
       end
 
       def on
@@ -50,7 +51,7 @@ module Artoo
         raspi_pin.on
       end
 
-      def on?
+      def is_on?
         value == true
       end
 
@@ -59,8 +60,8 @@ module Artoo
         raspi_pin.off
       end
 
-      def off?
-        !on?
+      def is_off?
+        !is_on?
       end
     end
   end
