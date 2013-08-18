@@ -58,5 +58,10 @@ To add the button used in the example, add a momentary contact switch to the cir
 
 ![GPIO Switch Circuit Example](https://github.com/jwhitehorn/pi_piper/blob/master/examples/simple_switch/circuit.png)
 
+## Contributing
 
-
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
