@@ -8,6 +8,8 @@ For more information about Artoo, check out our repo at https://github.com/hybri
 
 This gem makes extensive us the the pi_piper gem (https://github.com/jwhitehorn/pi_piper) thanks to @jwhitehorn
 
+[![Code Climate](https://codeclimate.com/github/hybridgroup/artoo-raspi.png)](https://codeclimate.com/github/hybridgroup/artoo-raspi) [![Build Status](https://travis-ci.org/hybridgroup/artoo-raspi.png?branch=master)](https://travis-ci.org/hybridgroup/artoo-raspi)
+
 ## Installing On Raspberry Pi
 
 If you do not already have Ruby installed, first you'll need to:
