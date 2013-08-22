@@ -6,7 +6,7 @@ Artoo is a open source micro-framework for robotics using Ruby.
 
 For more information about Artoo, check out our repo at https://github.com/hybridgroup/artoo
 
-This gem makes extensive us the the pi_piper gem (https://github.com/jwhitehorn/pi_piper) thanks to @jwhitehorn
+This gem makes extensive us the the pi_piper gem (https://github.com/jwhitehorn/pi_piper) thanks to [@jwhitehorn](https://github.com/jwhitehorn)
 
 [![Code Climate](https://codeclimate.com/github/hybridgroup/artoo-raspi.png)](https://codeclimate.com/github/hybridgroup/artoo-raspi) [![Build Status](https://travis-ci.org/hybridgroup/artoo-raspi.png?branch=master)](https://travis-ci.org/hybridgroup/artoo-raspi)
 
@@ -52,11 +52,11 @@ sudo ruby examples/raspi_led.rb
 
 This gem only works on a real Raspberry Pi. Do not bother trying on any other kind of computer it will not work. Also note you will need to connect actual circuits to the Raspberry Pi's GPIO pins. Here is an example of wiring the circuits for the GPIO to connect a single LED:
 
-![GPIO LED Circuit Example](https://github.com/jwhitehorn/pi_piper/blob/master/examples/morse_code/circuit.png)
+![GPIO LED Circuit Example](https://raw.github.com/jwhitehorn/pi_piper/master/examples/morse_code/circuit.png)
 
 To add the button used in the example, add a momentary contact switch to the circuit.
 
-![GPIO Switch Circuit Example](https://github.com/jwhitehorn/pi_piper/blob/master/examples/simple_switch/circuit.png)
+![GPIO Switch Circuit Example](https://raw.github.com/jwhitehorn/pi_piper/master/examples/simple_switch/circuit.png)
 
 ## Contributing
 
