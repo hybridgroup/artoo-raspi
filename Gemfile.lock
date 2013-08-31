@@ -1,26 +1,26 @@
 PATH
   remote: .
   specs:
-    artoo-raspi (0.2.0)
-      artoo (~> 1.0.0)
+    artoo-raspi (0.2.1.pre)
+      artoo (~> 1.1.0.pre)
       pi_piper
 
 GEM
   remote: http://rubygems.org/
   specs:
-    artoo (1.0.0)
-      celluloid (~> 0.14.1)
-      celluloid-io (~> 0.14.1)
+    artoo (1.1.0.pre)
+      celluloid (~> 0.15.0.pre2)
+      celluloid-io (~> 0.15.0.pre2)
       multi_json (~> 1.6)
       pry (~> 0.9)
       rake (~> 10.0)
       reel (~> 0.4.0.pre)
       thor (~> 0.18.1)
-    celluloid (0.14.1)
+    celluloid (0.15.0.pre2)
       timers (>= 1.0.0)
-    celluloid-io (0.14.1)
-      celluloid (>= 0.14.1)
-      nio4r (>= 0.4.5)
+    celluloid-io (0.15.0.pre2)
+      celluloid (>= 0.15.0.pre)
+      nio4r (>= 0.5.0)
     certified (0.1.1)
     coderay (1.0.9)
     ffi (1.9.0)

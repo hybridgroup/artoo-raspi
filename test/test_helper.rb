@@ -12,3 +12,8 @@ module PiPiper
     end
   end
 end
+
+MiniTest::Spec.before do
+  Celluloid.shutdown
+  Celluloid.boot
+end
