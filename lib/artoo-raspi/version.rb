@@ -1,5 +1,5 @@
 module Artoo
   module Raspi
-    VERSION = '0.2.1.pre'
+    VERSION = '0.2.1'
   end
 end
