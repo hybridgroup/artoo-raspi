@@ -27,6 +27,14 @@ module Artoo
         super
       end
 
+      def name
+        "Raspberry Pi"
+      end
+
+      def version
+        Artoo::Raspi::VERSION  
+      end
+
       # GPIO - digital interface
       def digital_read(pin)
         raspi_pin(pin, :in).read

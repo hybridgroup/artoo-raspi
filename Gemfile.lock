@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    artoo-raspi (0.2.1)
+    artoo-raspi (0.3.0)
       artoo (~> 1.1.1)
       artoo-gpio
       pi_piper (~> 1.3.2)

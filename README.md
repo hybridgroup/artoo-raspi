@@ -29,17 +29,18 @@ sudo gem install artoo-raspi
 ## Using
 
 ```ruby
-require 'artoo'
-
 connection :raspi, :adaptor => :raspi
-device :led, :driver => :raspi_pin, :pin => 17, :direction => :out
+device :board, :driver => :device_info
+device :led, :driver => :led, :pin => 17
 
 work do
+  puts "Firmware name: #{board.name}"
+  puts "Firmata version: #{board.version}"
+
   every 1.second do
     led.toggle
   end
 end
-
 ```
 
 To run the examples, requires sudo access on the Raspberry Pi:
