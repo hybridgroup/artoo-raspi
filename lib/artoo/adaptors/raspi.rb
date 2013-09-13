@@ -27,7 +27,7 @@ module Artoo
         super
       end
 
-      def name
+      def firmware_name
         "Raspberry Pi"
       end
 
