@@ -5,7 +5,7 @@ describe Artoo::Adaptors::Raspi do
   it "#name"
   it "#version"
 
-  describe "analog GPIO" do
+  describe "digital GPIO interface" do
     it "#digital_read"
     it "#digital_write"
   end
