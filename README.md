@@ -48,6 +48,12 @@ To run the examples, requires sudo access on the Raspberry Pi:
 sudo ruby examples/raspi_led.rb
 ```
 
+## Devices supported
+
+The following hardware devices have driver support via the artoo-gpio gem:
+- Button
+- LED
+
 ## Connecting to Raspberry Pi GPIO
 
 This gem only works on a real Raspberry Pi. Do not bother trying on any other kind of computer it will not work. Also note you will need to connect actual circuits to the Raspberry Pi's GPIO pins. Here is an example of wiring the circuits for the GPIO to connect a single LED:
