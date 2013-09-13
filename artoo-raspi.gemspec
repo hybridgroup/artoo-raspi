@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_runtime_dependency 'artoo', '~> 1.1.0'
-  s.add_runtime_dependency 'pi_piper'
+  s.add_runtime_dependency 'pi_piper', '~> 1.3.2'
   s.add_development_dependency 'minitest', '~> 5.0'
   s.add_development_dependency 'minitest-happy'
   s.add_development_dependency 'mocha', '~> 0.14.0'
