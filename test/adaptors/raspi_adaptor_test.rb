@@ -1,4 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + "/../test_helper")
 require 'artoo/adaptors/raspi'
 
-# TODO: test for your adaptor goes here...
+describe Artoo::Adaptors::Raspi do
+  it "#name"
+  it "#version"
+
+  describe "digital GPIO interface" do
+    it "#digital_read"
+    it "#digital_write"
+  end
+end
