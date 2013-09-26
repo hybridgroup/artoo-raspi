@@ -1,6 +1,6 @@
 class LinuxGpioPin
 
-  attr_reader :pin_num, :mode, :pin_file
+  attr_reader :pin_num, :mode, :pin_file, :status
 
   GPIO_PATH = "/sys/class/gpio"
   GPIO_DIRECTION_READ = "in"
@@ -26,7 +26,11 @@ class LinuxGpioPin
       value = (value == :high) ? 1 : 0
     end
 
-    raise StandardError unless ([HIGH, LOW].include? value.to_i)
+    value = value.to_i
+
+    raise StandardError unless ([HIGH, LOW].include? value)
+
+    @status = (value == 1) ? 'high' : 'low'
 
     @pin_file.write(value)
     @pin_file.flush
@@ -52,13 +56,21 @@ class LinuxGpioPin
     end
   end
 
+  def on?
+    (@status == 'high') ? true : false
+  end
+
+  def off?
+    !self.on?
+  end
+
   # Sets digital write for the pin to HIGH
-  def on
+  def on!
     digital_write(:high)
   end
 
   # Sets digital write for the pin to LOW
-  def off
+  def off!
     digital_write(:off)
   end
 
