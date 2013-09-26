@@ -6,7 +6,7 @@ module Artoo
     # @see device documentation for more information
     class Raspi < Adaptor
       finalizer :finalize
-      attr_reader :device
+      attr_reader :device, :pins
 
       # Closes connection with device if connected
       # @return [Boolean]
@@ -16,7 +16,7 @@ module Artoo
       # Creates a connection with device
       # @return [Boolean]
       def connect
-        require 'pi_piper' unless defined?(::PiPiper)
+        require 'linux_gpio_pin'
 
         super
       end
@@ -32,7 +32,7 @@ module Artoo
       end
 
       def version
-        Artoo::Raspi::VERSION  
+        Artoo::Raspi::VERSION
       end
 
       # GPIO - digital interface
@@ -42,11 +42,13 @@ module Artoo
 
       def digital_write(pin, val)
         p = raspi_pin(pin, :out)
-        val ? p.on : p.off
+        (val == :high) ? p.on : p.off
       end
 
       def raspi_pin(pin, direction)
+        pins = [] if pins.nil?
         pins[pin] ||= ::PiPiper::Pin.new(:pin => pin, :direction => direction)
+        pins[pin]
       end
 
       # Uses method missing to call device actions
