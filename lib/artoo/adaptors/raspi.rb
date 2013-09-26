@@ -37,17 +37,18 @@ module Artoo
 
       # GPIO - digital interface
       def digital_read(pin)
-        raspi_pin(pin, :in).read
+        pin = raspi_pin(pin, "r")
+        pin.digital_read
       end
 
       def digital_write(pin, val)
-        p = raspi_pin(pin, :out)
-        (val == :high) ? p.on : p.off
+        pin = raspi_pin(pin, "w")
+        pin.digital_write(val)
       end
 
-      def raspi_pin(pin, direction)
+      def raspi_pin(pin, mode)
         pins = [] if pins.nil?
-        pins[pin] ||= ::PiPiper::Pin.new(:pin => pin, :direction => direction)
+        pins[pin] = LinuxGpioPin.new(pin, mode) if pins[pin].nil? || pins[pin].mode != mode
         pins[pin]
       end
 
