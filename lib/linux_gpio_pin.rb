@@ -52,6 +52,16 @@ class LinuxGpioPin
     end
   end
 
+  # Sets digital write for the pin to HIGH
+  def on
+    digital_write(:high)
+  end
+
+  # Sets digital write for the pin to LOW
+  def off
+    digital_write(:off)
+  end
+
   # Unexports the pin in GPIO to leave it free
   def close
     File.open("#{ GPIO_PATH }/unexport", "w") { |f| f.write("#{pin_num}") }
