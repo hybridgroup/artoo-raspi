@@ -11,7 +11,7 @@ class LinuxGpioPin
   def initialize(pin, mode)
     @pin = pin
 
-    File.open("#{ GPIO_PATH }export", "w") { |f| f.write("#{pin}") }
+    File.open("#{ GPIO_PATH }/export", "w") { |f| f.write("#{pin}") }
 
     # Sets the pin for read or write
     set_pin_mode(mode)
@@ -49,5 +49,10 @@ class LinuxGpioPin
     elsif mode ==:r
       File.open("#{ GPIO_PATH }/gpio#{@pin}/direction", "w") { |f| f.write(OUTPUT) }
     end
+  end
+
+  # Unexports the pin in GPIO to leave it free
+  def close
+    File.open("#{ GPIO_PATH }/unexport", "w") { |f| f.write("#{pin}") }
   end
 end
