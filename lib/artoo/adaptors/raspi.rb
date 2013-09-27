@@ -16,7 +16,7 @@ module Artoo
       # Creates a connection with device
       # @return [Boolean]
       def connect
-        require 'linux_gpio_pin'
+        include LinuxGpio::DigitalPin
 
         super
       end
@@ -48,7 +48,7 @@ module Artoo
 
       def raspi_pin(pin, mode)
         pins = [] if pins.nil?
-        pins[pin] = LinuxGpioPin.new(pin, mode) if pins[pin].nil? || pins[pin].mode != mode
+        pins[pin] = DigitalPin.new(pin, mode) if pins[pin].nil? || pins[pin].mode != mode
         pins[pin]
       end
 
