@@ -17,8 +17,6 @@ module Artoo
       # Creates a connection with device
       # @return [Boolean]
       def connect
-        include LinuxGpio::DigitalPin
-
         super
       end
 
