@@ -1,4 +1,4 @@
-module LinuxGpio
+module LinuxIo
   class I2c
 
     attr_reader :handle, :address

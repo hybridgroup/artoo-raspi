@@ -1,5 +1,5 @@
 require 'artoo/adaptors/adaptor'
-require 'linux_gpio'
+require 'linux_io'
 
 module Artoo
   module Adaptors
