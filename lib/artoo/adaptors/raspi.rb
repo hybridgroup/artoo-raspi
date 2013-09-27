@@ -1,4 +1,5 @@
 require 'artoo/adaptors/adaptor'
+require 'linux_gpio'
 
 module Artoo
   module Adaptors
@@ -48,7 +49,7 @@ module Artoo
 
       def raspi_pin(pin, mode)
         pins = [] if pins.nil?
-        pins[pin] = DigitalPin.new(pin, mode) if pins[pin].nil? || pins[pin].mode != mode
+        pins[pin] = LinuxGpio::DigitalPin.new(pin, mode) if pins[pin].nil? || pins[pin].mode != mode
         pins[pin]
       end
 
