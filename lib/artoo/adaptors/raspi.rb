@@ -7,7 +7,7 @@ module Artoo
     # @see device documentation for more information
     class Raspi < Adaptor
       finalizer :finalize
-      attr_reader :device, :pins
+      attr_reader :device, :pins, :i2c
 
       # Closes connection with device if connected
       # @return [Boolean]
@@ -32,6 +32,25 @@ module Artoo
 
       def version
         Artoo::Raspi::VERSION
+      end
+
+      #i2c
+      def i2c_start address
+        rev = `cat /proc/cpuinfo | grep Revision`.split.last.unpack("CCCC").last #determind board version
+        if rev >= 100
+          i2c_location = "/dev/i2c-1"
+        else
+          i2c_location = "/dev/i2c-0"
+        end
+        @i2c = LinuxIo::I2c.new i2c_location, address
+      end
+
+      def i2c_write *data
+        @i2c.write *data
+      end
+
+      def i2c_read len
+        @i2c.read len
       end
 
       # GPIO - digital interface

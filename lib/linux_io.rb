@@ -1,17 +1,18 @@
 module LinuxIo
   class I2c
 
-    attr_reader :handle, :address
+    attr_reader :handle, :address, :i2c_location
 
-    I2C2_FILE = "/dev/i2c-1"
+    I2C_SLAVE = 0x0703
 
-    def initialize(address)
+    def initialize(i2c_location, address)
+      @i2c_location = i2c_location
       start(address)
     end
 
     def start(address)
       @address = address
-      @handle = File.open(I2C2_FILE, 'r+')
+      @handle = File.open(@i2c_location, 'r+')
       @handle.ioctl(I2C_SLAVE, @address)
 
       write 0
@@ -31,6 +32,7 @@ module LinuxIo
       begin
         @handle.read_nonblock(len).unpack("C#{len}")
       rescue Exception => e
+        start(@address)
       end
     end
   end
@@ -115,5 +117,5 @@ module LinuxIo
     def close
       File.open("#{ GPIO_PATH }/unexport", "w") { |f| f.write("#{pin_num}") }
     end
-  end 
+  end
 end
