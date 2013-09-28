@@ -6,8 +6,27 @@ module Artoo
     # Connect to a Raspberry Pi GPIO
     # @see device documentation for more information
     class Raspi < Adaptor
+      PINS = {
+        3 => {:rev1 => 0, :rev2 => 2},
+        5 => {:rev1 => 1, :rev2 => 3},
+        7 => 4,
+        8 => 14,
+        10 => 15,
+        11 => 17,
+        12 => 18,
+        13 => {:rev1 => 21, :rev2 => 27},
+        15 => 22,
+        16 => 23,
+        18 => 24,
+        19 => 10,
+        21 => 9,
+        22 => 25,
+        23 => 11,
+        24 => 8,
+        26 => 7,
+      }
       finalizer :finalize
-      attr_reader :device, :pins, :i2c
+      attr_reader :device, :pins, :i2c, :board_version
 
       # Closes connection with device if connected
       # @return [Boolean]
@@ -17,6 +36,7 @@ module Artoo
       # Creates a connection with device
       # @return [Boolean]
       def connect
+        @board_version = `cat /proc/cpuinfo | grep Revision`.split.last.unpack("CCCC").last
         super
       end
 
@@ -36,8 +56,7 @@ module Artoo
 
       #i2c
       def i2c_start address
-        rev = `cat /proc/cpuinfo | grep Revision`.split.last.unpack("CCCC").last # determine board version
-        if rev >= 100
+        if @board_version >= 100
           i2c_location = "/dev/i2c-1"
         else
           i2c_location = "/dev/i2c-0"
@@ -66,6 +85,7 @@ module Artoo
 
       def raspi_pin(pin, mode)
         pins = [] if pins.nil?
+        pin = translate_pin pin
         pins[pin] = LinuxIo::DigitalPin.new(pin, mode) if pins[pin].nil? || pins[pin].mode != mode
         pins[pin]
       end
@@ -74,6 +94,24 @@ module Artoo
       # @see device documentation
       def method_missing(method_name, *arguments, &block)
         device.send(method_name, *arguments, &block)
+      end
+
+      private
+      def translate_pin pin
+        begin
+          p = PINS.fetch(pin.to_i)
+          if p.class == Hash
+            if @board_version >= 54
+             return p[:rev2] 
+            else
+             return p[:rev1] 
+            end
+          else
+            return p
+          end
+        rescue Exception => e
+          raise "Not a valid pin"
+        end
       end
     end
   end
