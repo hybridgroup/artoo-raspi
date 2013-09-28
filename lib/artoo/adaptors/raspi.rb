@@ -36,7 +36,7 @@ module Artoo
 
       #i2c
       def i2c_start address
-        rev = `cat /proc/cpuinfo | grep Revision`.split.last.unpack("CCCC").last #determind board version
+        rev = `cat /proc/cpuinfo | grep Revision`.split.last.unpack("CCCC").last # determine board version
         if rev >= 100
           i2c_location = "/dev/i2c-1"
         else
