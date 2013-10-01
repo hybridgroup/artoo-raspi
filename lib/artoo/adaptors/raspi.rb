@@ -1,10 +1,13 @@
 require 'artoo/adaptors/adaptor'
-require 'linux_io'
+require 'artoo/adaptors/io'
 
 module Artoo
   module Adaptors
     # Connect to a Raspberry Pi GPIO
     # @see device documentation for more information
+
+    require 'linux_io'
+
     class Raspi < Adaptor
       PINS = {
         3 => {:rev1 => 0, :rev2 => 2},
@@ -86,7 +89,7 @@ module Artoo
       def raspi_pin(pin, mode)
         pins = [] if pins.nil?
         pin = translate_pin pin
-        pins[pin] = LinuxIo::DigitalPin.new(pin, mode) if pins[pin].nil? || pins[pin].mode != mode
+        pins[pin] = DigitalPin.new(pin, mode) if pins[pin].nil? || pins[pin].mode != mode
         pins[pin]
       end
 
