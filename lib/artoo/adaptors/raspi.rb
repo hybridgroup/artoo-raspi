@@ -1,5 +1,6 @@
 require 'artoo/adaptors/adaptor'
 require 'artoo/adaptors/io'
+require 'pwm_pin'
 
 module Artoo
   module Adaptors
@@ -28,7 +29,7 @@ module Artoo
         26 => 7,
       }
       finalizer :finalize
-      attr_reader :device, :pins, :i2c, :board_version
+      attr_reader :device, :pins, :pwm_pins, :i2c, :board_version
 
       # Closes connection with device if connected
       # @return [Boolean]
@@ -38,6 +39,8 @@ module Artoo
       # Creates a connection with device
       # @return [Boolean]
       def connect
+        @pins = {} if @pins.nil?
+        @pwm_pins = {} if @pwm_pins.nil?
         @board_version = `cat /proc/cpuinfo | grep Revision`.split.last.unpack("CCCC").last
         super
       end
@@ -81,17 +84,21 @@ module Artoo
       end
 
       def digital_write(pin, val)
+        releae_pwm(pin) if (pwm_used? pin)
         pin = raspi_pin(pin, "w")
         pin.digital_write(val)
       end
 
-      def raspi_pin(pin, mode)
-        pins = [] if pins.nil?
-        pin = translate_pin pin
-        pins[pin] = DigitalPin.new(pin, mode) if pins[pin].nil? || pins[pin].mode != mode
-        pins[pin]
+      def pwm_write(pin, val)
+        pin = pwm_pin(pin)
+        pin.pwm_write(val)
       end
 
+      def release_pwm(pin)
+        pin = translate_pin(pin)
+        pwm_pins[pin].release
+        pwm_pins[pin] = nil
+      end
       # Uses method missing to call device actions
       # @see device documentation
       def method_missing(method_name, *arguments, &block)
@@ -99,14 +106,31 @@ module Artoo
       end
 
       private
+
+      def pwm_used?(pin)
+        (pwm_pin[translate_pin(pin)].nil?) ? false : true
+      end
+
+      def raspi_pin(pin, mode)
+        pin = translate_pin pin
+        pins[pin] = DigitalPin.new(pin, mode) if pins[pin].nil? || pins[pin].mode != mode
+        pins[pin]
+      end
+
+      def pwm_pin(pin)
+        pin = translate_pin(pin)
+        pwm_pins[pin] = PwmPin.new(pin) if pwm_pins[pin].nil?
+        pwm_pins[pin]
+      end
+
       def translate_pin pin
         begin
           p = PINS.fetch(pin.to_i)
           if p.class == Hash
             if @board_version >= 54
-             return p[:rev2] 
+             return p[:rev2]
             else
-             return p[:rev1] 
+             return p[:rev1]
             end
           else
             return p
