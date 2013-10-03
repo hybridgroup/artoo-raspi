@@ -3,8 +3,8 @@ require 'artoo'
 # Circuit and schematic here: http://arduino.cc/en/tutorial/button
 
 connection :raspi, :adaptor => :raspi
-device :led, :driver => :led, :pin => 17
-device :button, :driver => :button, :pin => 18, :interval => 0.01
+device :led, :driver => :led, :pin => 11
+device :button, :driver => :button, :pin => 12, :interval => 0.01
 
 work do
   puts
