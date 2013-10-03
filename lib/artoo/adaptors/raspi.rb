@@ -48,6 +48,7 @@ module Artoo
       # Closes connection with device
       # @return [Boolean]
       def disconnect
+        release_all_pwm_pins
         super
       end
 
@@ -99,6 +100,11 @@ module Artoo
         pwm_pins[pin].release
         pwm_pins[pin] = nil
       end
+
+      def release_all_pwm_pins
+        pwm_pins.each_value { |pwm_pin| pwm_pin.release }
+      end
+
       # Uses method missing to call device actions
       # @see device documentation
       def method_missing(method_name, *arguments, &block)
