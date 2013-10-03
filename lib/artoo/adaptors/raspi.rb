@@ -85,7 +85,7 @@ module Artoo
       end
 
       def digital_write(pin, val)
-        releae_pwm(pin) if (pwm_used? pin)
+        release_pwm(pin) if (pwm_used? pin)
         pin = raspi_pin(pin, "w")
         pin.digital_write(val)
       end
@@ -114,7 +114,7 @@ module Artoo
       private
 
       def pwm_used?(pin)
-        (pwm_pin[translate_pin(pin)].nil?) ? false : true
+        (pwm_pins[translate_pin(pin)].nil?) ? false : true
       end
 
       def raspi_pin(pin, mode)
