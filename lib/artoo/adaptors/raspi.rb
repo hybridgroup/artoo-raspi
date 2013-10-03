@@ -5,10 +5,9 @@ module Artoo
   module Adaptors
     # Connect to a Raspberry Pi GPIO
     # @see device documentation for more information
-
-    require 'linux_io'
-
     class Raspi < Adaptor
+      include Artoo::Adaptors::IO
+
       PINS = {
         3 => {:rev1 => 0, :rev2 => 2},
         5 => {:rev1 => 1, :rev2 => 3},
@@ -64,7 +63,7 @@ module Artoo
         else
           i2c_location = "/dev/i2c-0"
         end
-        @i2c = LinuxIo::I2c.new i2c_location, address
+        @i2c = I2c.new i2c_location, address
       end
 
       def i2c_write *data
