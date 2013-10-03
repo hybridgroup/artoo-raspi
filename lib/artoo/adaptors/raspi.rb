@@ -80,6 +80,7 @@ module Artoo
 
       # GPIO - digital interface
       def digital_read(pin)
+        release_pwm(pin) if (pwm_used? pin)
         pin = raspi_pin(pin, "r")
         pin.digital_read
       end
