@@ -79,6 +79,15 @@ You must also ensure that these entries are commented in your `/etc/modprobe.d/r
 ```
 Now restart your raspberry pi.
 
+## Enabling PWM output on GPIO pins.
+
+You need to install and have pi-blaster running in the raspberry-pi,
+you can follow the instructions for pi-blaster install on our repo here:
+
+https://github.com/hybridgroup/pi-blaster
+
+Now restart your raspberry pi.
+ 
 ## Contributing
 
 1. Fork it
