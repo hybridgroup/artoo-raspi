@@ -65,6 +65,27 @@ To add the button used in the example, add a momentary contact switch to the cir
 
 ![GPIO Switch Circuit Example](https://raw.github.com/jwhitehorn/pi_piper/master/examples/simple_switch/circuit.png)
 
+## Enabling the Raspberry Pi i2c on raspbian
+
+You must add these two entries in your `/etc/modules`
+```
+i2c-bcm2708 
+i2c-dev
+```
+You must also ensure that these entries are commented in your `/etc/modprobe.d/raspi-blacklist.conf`
+```
+#blacklist spi-bcm2708
+#blacklist i2c-bcm2708
+```
+Now restart your raspberry pi.
+
+## Enabling PWM output on GPIO pins.
+
+You need to install and have pi-blaster running in the raspberry-pi,
+you can follow the instructions for pi-blaster install on our repo here:
+
+https://github.com/hybridgroup/pi-blaster
+
 ## Contributing
 
 1. Fork it
