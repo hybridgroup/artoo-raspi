@@ -1,7 +1,5 @@
 require 'artoo'
 
-# Circuit and schematic here: http://arduino.cc/en/Tutorial/Blink
-
 connection :raspi, :adaptor => :raspi
 device :board, :driver => :device_info
 device :led, :driver => :led, :pin => 11

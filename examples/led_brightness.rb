@@ -1,8 +1,5 @@
 require 'artoo'
 
-# Circuit and schematic here: http://arduino.cc/en/Tutorial/Fade
-
-#connection :firmata, :adaptor => :firmata, :port => '/dev/tty*'
 connection :raspi, :adaptor => :raspi
 device :board, :driver => :device_info
 device :led, :driver => :led, :pin => 11
@@ -12,11 +9,8 @@ fade_amount = 5
 
 
 work do
-
   puts "Firmware name: #{board.firmware_name}"
   puts "Firmata version: #{board.version}"
-
-  #led.on
 
   every(0.05) do
     led.brightness(brightness)
@@ -25,5 +19,4 @@ work do
       fade_amount = -fade_amount
     end
   end
-
 end
