@@ -86,8 +86,6 @@ you can follow the instructions for pi-blaster install on our repo here:
 
 https://github.com/hybridgroup/pi-blaster
 
-Now restart your raspberry pi.
- 
 ## Contributing
 
 1. Fork it
