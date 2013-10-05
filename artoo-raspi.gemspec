@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "artoo-raspi"
   s.version     = Artoo::Raspi::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Ron Evans"]
+  s.authors     = ["Ron Evans", "Edgar Silva", "Adrian Zankich"]
   s.email       = ["artoo@hybridgroup.com"]
   s.homepage    = "https://github.com/hybridgroup/artoo-raspi"
   s.summary     = %q{Artoo adaptor for Raspberry Pi}

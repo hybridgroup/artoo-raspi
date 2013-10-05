@@ -6,8 +6,6 @@ Artoo is a open source micro-framework for robotics using Ruby.
 
 For more information about Artoo, check out our repo at https://github.com/hybridgroup/artoo
 
-This gem makes extensive us the the pi_piper gem (https://github.com/jwhitehorn/pi_piper) thanks to [@jwhitehorn](https://github.com/jwhitehorn)
-
 [![Code Climate](https://codeclimate.com/github/hybridgroup/artoo-raspi.png)](https://codeclimate.com/github/hybridgroup/artoo-raspi) [![Build Status](https://travis-ci.org/hybridgroup/artoo-raspi.png?branch=master)](https://travis-ci.org/hybridgroup/artoo-raspi)
 
 ## Installing On Raspberry Pi
