@@ -4,7 +4,6 @@ require 'artoo/adaptors/raspi'
 describe Artoo::Adaptors::Raspi do
   before do
     @adaptor = Artoo::Adaptors::Raspi.new
-    #@adaptor.stubs(:joystick).returns("joy")
   end
 
   describe "device info interface" do
@@ -22,9 +21,13 @@ describe Artoo::Adaptors::Raspi do
     it "#digital_write"
   end
 
+  describe "PWM GPIO interface" do
+    it "#pwm_write"
+  end
+
   describe "i2c interface" do
     it "#i2c_start"
     it "#i2c_read"
-    it "#digital_write"
+    it "#i2c_write"
   end
 end
