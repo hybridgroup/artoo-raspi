@@ -34,7 +34,7 @@ module Artoo
       # Closes connection with device if connected
       # @return [Boolean]
       def finalize
-        release_all_pwm_pins if connected?
+        disconnect if connected?
       end
 
       # Creates a connection with device
