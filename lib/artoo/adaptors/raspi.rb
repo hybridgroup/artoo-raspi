@@ -28,14 +28,8 @@ module Artoo
         24 => 8,
         26 => 7,
       }
-      finalizer :finalize
-      attr_reader :device, :pins, :pwm_pins, :i2c, :board_version
 
-      # Closes connection with device if connected
-      # @return [Boolean]
-      def finalize
-        disconnect if connected?
-      end
+      attr_reader :device, :pins, :pwm_pins, :i2c, :board_version
 
       # Creates a connection with device
       # @return [Boolean]
@@ -49,6 +43,7 @@ module Artoo
       # Closes connection with device
       # @return [Boolean]
       def disconnect
+        puts "Disconnecting all PWM pins..."
         release_all_pwm_pins
         super
       end
