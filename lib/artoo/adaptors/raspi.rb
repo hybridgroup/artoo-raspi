@@ -33,9 +33,9 @@ module Artoo
 
       # Closes connection with device if connected
       # @return [Boolean]
-      def finalize
-        disconnect if connected?
-      end
+      #def finalize
+      #  disconnect if connected?
+      #end
 
       # Creates a connection with device
       # @return [Boolean]
