@@ -1,3 +1,4 @@
+require 'artoo-raspi/version'
 require 'artoo/adaptors/adaptor'
 require 'artoo/adaptors/io'
 require 'pwm_pin'
