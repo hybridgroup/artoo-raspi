@@ -67,7 +67,7 @@ To add the button used in the example, add a momentary contact switch to the cir
 
 You must add these two entries in your `/etc/modules`
 ```
-i2c-bcm2708 
+i2c-bcm2708
 i2c-dev
 ```
 You must also ensure that these entries are commented in your `/etc/modprobe.d/raspi-blacklist.conf`
@@ -108,4 +108,4 @@ Need more help? Just want to say "Hello"? Come visit us on IRC freenode #artoo
   * For git help see [progit](http://git-scm.com/book) which is an awesome (and free) book on git
 
 
-(c) 2012-2014 The Hybrid Group
+(c) 2012-2015 The Hybrid Group
