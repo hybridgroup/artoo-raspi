@@ -1,2 +1,2 @@
-require 'lib/artoo/adaptors/raspi'
-require 'lib/artoo-raspi/version'
+require 'artoo-raspi/version'
+require 'artoo/adaptors/raspi'
