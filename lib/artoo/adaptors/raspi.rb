@@ -46,6 +46,8 @@ module Artoo
       def disconnect
         puts "Disconnecting all PWM pins..."
         release_all_pwm_pins
+        puts "Disconnecting all Raspi pins..."
+        close_all_raspi_pins
         super
       end
 
@@ -101,6 +103,10 @@ module Artoo
 
       def release_all_pwm_pins
         pwm_pins.each_value { |pwm_pin| pwm_pin.release }
+      end
+
+      def close_all_raspi_pins
+        pins.each_value { |pin| pin.close }
       end
 
       # Uses method missing to call device actions
