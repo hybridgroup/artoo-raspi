@@ -44,9 +44,7 @@ module Artoo
       # Closes connection with device
       # @return [Boolean]
       def disconnect
-        puts "Disconnecting all PWM pins..."
         release_all_pwm_pins
-        puts "Disconnecting all Raspi pins..."
         close_all_raspi_pins
         super
       end
